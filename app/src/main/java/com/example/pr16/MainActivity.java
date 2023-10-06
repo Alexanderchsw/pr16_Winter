@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends Activity implements OnClickListener {
@@ -17,6 +18,7 @@ public class MainActivity extends Activity implements OnClickListener {
 
     SharedPreferences sPref;
 
+    TextView textView2;
     final String SAVED_TEXT = "saved_text";
 
 
@@ -33,6 +35,9 @@ public class MainActivity extends Activity implements OnClickListener {
 
         btnLoad = (Button) findViewById(R.id.btnLoad);
         btnLoad.setOnClickListener(this);
+
+        textView2 = (TextView) findViewById(R.id.textView2);
+        textView2.setOnClickListener(this);
 
         loadText();
     }
@@ -62,7 +67,7 @@ public class MainActivity extends Activity implements OnClickListener {
     void loadText() {
         sPref = getPreferences(MODE_PRIVATE);
         String savedText = sPref.getString(SAVED_TEXT, "");
-        etText.setText(savedText);
+        textView2.setText(savedText);
         Toast.makeText(this, "Text loaded", Toast.LENGTH_SHORT).show();
     }
 
